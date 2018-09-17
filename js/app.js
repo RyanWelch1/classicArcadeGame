@@ -3,7 +3,9 @@ var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
        // x position
+       this.x = 0;
        // y position
+       this.y = 0;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -67,7 +69,7 @@ Enemy.prototype.render = function() {
             if (this.y < this.fly *4){
               this.y += this.fly;
             }
-            
+
             break;
 
 
