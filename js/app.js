@@ -1,14 +1,18 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
        // x position
-       this.x = 0;
+       this.x = x;
        // y position
-       this.y = 0;
+       this.y = y + 60;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.swipe = 101;
+    this.fly = 83;
+    this.boundry = this.swipe * 5;
 };
 
 // Update the enemy's position, required method for game
@@ -18,8 +22,15 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
      // if not out of bounds , move forward
+
+     if ( this.x < this.boundry){
+       this.x += this.speed * dt;
+     }
      // increment x by speed * dt
      //else reset to beginning
+     else {
+       this.x = 0
+     }
 
 };
 
@@ -89,12 +100,16 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
   //knight object
   const player = new knight();
+  const enemyOne = new Enemy(-101,0, 200);
+  const enemyTwo = new Enemy(-101,83, 250);
+  const enemyThree = new Enemy(-101 *2.5, 83, 355);
 
 
 // Place all enemy objects in an array called allEnemies
   // create array
 
   const allEnemies=[];
+  allEnemies.push(enemyOne, enemyTwo, enemyThree);
 
 // Place the player object in a variable called player
   //for each enemy create new Enemy into array
