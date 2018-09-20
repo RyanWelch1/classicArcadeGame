@@ -5,7 +5,7 @@ var Enemy = function(x,y, speed) {
        // x position
        this.x = x;
        // y position
-       this.y = y + 60;
+       this.y = y + 55;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.speed = speed;
@@ -47,9 +47,10 @@ Enemy.prototype.render = function() {
        this.swipe = 101;
        this.fly = 83;
        this.startX = this.swipe *2;
-       this.startY = (this.fly *5) -30;
+       this.startY = (this.fly *4) +55;
        this.x = this.startX;
        this.y = this.startY;
+       this.victory = false;
 
        // Sprite image
        this.sprite = 'images/char-boy.png';
@@ -85,13 +86,31 @@ Enemy.prototype.render = function() {
 
 
        }
-
      }
+    update() {
+      for(let Enemy of allEnemies) {
+          if (this.y === Enemy.y && (Enemy.x + Enemy.swipe >this.x && Enemy.x < this.x +   this.swipe)){
+          this.reset();
+          }
+          if(this.y === 55) {
+            this.victory = true;
+          }
+          if (player.victory === true){
+            console.log('game over');
+          }
+         //  win.requestAnimationFrame(main);
+        }
+      }
+
+
        //update position
-
-
-
+   reset () {
+     this.y = this.startY;
+     this.x = this.startX;
+   }
 }
+
+
 
 // This class requires an update(), render() and
 // a handleInput() method.
