@@ -47,6 +47,7 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
   // Knight Class
+  // snippet from https://matthewcranford.com/arcade-game-walkthrough-part-6-collisions-win-conditions-and-game-resets/
   class knight {
    constructor() {
      // Properties
