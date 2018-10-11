@@ -1,3 +1,8 @@
+$( document ).ready(function() {
+    $("#modalContent").hide();
+    $("#modal").hide();
+});
+
 // Enemies our player must avoid
 var Enemy = function(x,y, speed) {
     // Variables applied to each of our instances go here,
@@ -13,6 +18,7 @@ var Enemy = function(x,y, speed) {
     this.swipe = 101;
     this.fly = 83;
     this.boundry = this.swipe * 5;
+    this.resetPos = -this.step;
 };
 
 // Update the enemy's position, required method for game
@@ -22,14 +28,14 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
      // if not out of bounds , move forward
-
+    // increment x by speed * dt
      if ( this.x < this.boundry){
-       this.x += this.speed * dt;
+       this.x += 300 * dt;
      }
-     // increment x by speed * dt
+
      //else reset to beginning
      else {
-       this.x = 0
+       this.x = 0;
      }
 
 };
@@ -51,6 +57,7 @@ Enemy.prototype.render = function() {
        this.x = this.startX;
        this.y = this.startY;
        this.victory = false;
+
 
        // Sprite image
        this.sprite = 'images/char-boy.png';
@@ -81,57 +88,49 @@ Enemy.prototype.render = function() {
             if (this.y < this.fly *4){
               this.y += this.fly;
             }
-
             break;
-
-
        }
      }
-    update() {
-      for(let Enemy of allEnemies) {
-          if (this.y === Enemy.y && (Enemy.x + Enemy.swipe >this.x && Enemy.x < this.x +   this.swipe)){
-          this.reset();
-          }
-          if(this.y === 55) {
-            this.victory = true;
-          }
-          if (player.victory === true){
-            console.log('game over');
-          }
-         //  win.requestAnimationFrame(main);
+
+     update() {
+        for(let enemy of allEnemies) {
+
+        if (this.y === enemy.y && (enemy.x + enemy.swipe/2 >this.x && enemy.x < this.x + this.swipe/2)){
+          console.log("yep");
+            this.reset();
+        }
+        if(this.y === 55) {
+          this.victory = true;
         }
       }
+     }
 
-
-       //update position
-   reset () {
-     this.y = this.startY;
-     this.x = this.startX;
-   }
+//reset to start player over
+      reset() {
+        this.y = this.startY;
+        this.x = this.startX;
+      }
 }
 
 
 
-// This class requires an update(), render() and
-// a handleInput() method.
+
+// Place the player object in a variable called player
 
 
-// Now instantiate your objects.
-  //knight object
   const player = new knight();
-  const enemyOne = new Enemy(-101,0, 200);
+
+//for each enemy create new Enemy into array
+  const enemyOne = new Enemy(-101,0, 300);
   const enemyTwo = new Enemy(-101,83, 250);
-  const enemyThree = new Enemy(-101 *2.5, 83, 355);
+  const enemyThree = new Enemy(-101 *2.5, 166, 355);
 
 
 // Place all enemy objects in an array called allEnemies
-  // create array
+// create array
 
   const allEnemies=[];
   allEnemies.push(enemyOne, enemyTwo, enemyThree);
-
-// Place the player object in a variable called player
-  //for each enemy create new Enemy into array
 
 
 // This listens for key presses and sends the keys to your

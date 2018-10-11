@@ -22,7 +22,11 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        id;
+
+//const modal =document.getElementById('.modal');
+const replay = document.querySelector('.modal-button')
 
     canvas.width = 505;
     canvas.height = 606;
@@ -55,8 +59,23 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+         if (player.victory === true){
+           win.cancelAnimationFrame(id);
+           $("#modal").show();
+           $("#startOver").on("click", function() {
+                           location.reload();
+                 })
+
+         }
+
+         else {
+           id = win.requestAnimationFrame(main);
+         }
     }
+
+
+
+
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -79,7 +98,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+       //checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the

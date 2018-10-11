@@ -1,6 +1,21 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
+_* summary_
+_* [Instructions](#instructions)_
+_* [Contributing](#contributing)_
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Summary
+
+The Classic Arcade game is based on the older game called Frogger. The object is to get across the game board without getting hit. If a collision is detected the player will be sent to the beginning and have to start over.
+
+## instructions
+
+Use the arrows on your keyboard to navigate left and right and to move forward or backwards. If hit you will have to start over. Once you make it across you will have won the game and will have the option to play again.
+
+
+## Contributing
+
+This repository can be found here: _https://github.com/RyanWelch1/classicArcadeGame.git_
+
+For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
