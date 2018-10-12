@@ -18,4 +18,6 @@ Use the arrows on your keyboard to navigate left and right and to move forward o
 
 This repository can be found here: _https://github.com/RyanWelch1/classicArcadeGame.git_
 
+To start, open index.html file in browser. The game will load and you will be able to begin playing. 
+
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
